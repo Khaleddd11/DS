@@ -16,8 +16,8 @@ class LinkedList{
     }
 
     void insertFirst(int newValue ){
-        Node* newNode;
-        newNode ->data =newValue;
+        Node* newNode = new Node();
+        newNode ->data = newValue;
 
         if (isEmpty()){
             newNode ->next = nullptr;
@@ -34,21 +34,21 @@ class LinkedList{
         Node* temp = head;
         while(temp != nullptr)
         {
-            cout<< temp->data<<endl;
+            cout<< temp->data<<" ";
             temp=temp->next;
         }
     }
 
-    int count()
+    int getcount()
     {
-        int count;
+        int getcount =0;
         Node* temp = head;
         while(temp != nullptr)
         {
-            count++;
+            getcount++;
             temp=temp->next;
         }
-        return count;
+        return getcount;
     }
 
     bool isFound( int key)
@@ -63,6 +63,73 @@ class LinkedList{
             temp= temp->next;
         }
         return found;
-        
+    }
+
+    void insertBefore(int data, int beforeData)
+    {
+        if(isEmpty())
+        {
+            insertFirst(data);
+        }
+        if(isFound(beforeData))
+        {
+        Node* newNode = new Node();
+        newNode ->data =data;
+
+        Node* temp= head;
+        while(temp  != nullptr && temp->next->data != beforeData)
+        {
+            temp = temp ->next;
+        }
+        newNode->next=temp->next;
+        temp->next = newNode;
+    }
+    else
+    {
+        cout<<"Item not found"<<endl;
+    }
+    }
+
+    void After(int data, int afterData)
+    {
+        if(isEmpty())
+        {
+            insertFirst(data);
+        }
+        if(isFound(afterData))
+        {
+        Node* newNode = new Node();
+        newNode ->data =data;
+
+        Node* temp= head;
+        while(temp  != nullptr && temp->data != afterData)
+        {
+            temp = temp ->next;
+        }
+        newNode->next=temp->next;
+        temp->next = newNode;
+    }
+    else
+    {
+        cout<<"Item not found"<<endl;
+    }
+    }
+
+    int getDataByIndex(int index)
+    {
+        int counter = 0 ;
+        Node* temp = head;
+        while( temp != nullptr && counter !=index)
+        {
+            temp = temp->next;
+            counter ++;
+        }
+        if(temp != nullptr) {
+            return temp->data;
+        } 
+        else {
+            cout << "Error: Index out of range" << endl;
+            return -1; 
+        }
     }
 };
