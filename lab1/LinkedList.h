@@ -155,5 +155,74 @@ class LinkedList{
 
     }
 
-    
+    void remove(int data)
+    {
+        if(isEmpty())
+        {
+            cout<<"List is already empty, no items to delete"<<endl;
+        }
+
+        if(head->data == data )
+        {
+            Node* delPtr=head;
+            head=head->next;
+            delete delPtr;
+        } 
+
+        else
+        {
+        Node* delPtr= head;
+        Node* prev= nullptr;
+
+        while(delPtr != nullptr && delPtr->data != data){
+            prev= delPtr;
+            delPtr=delPtr->next;
+        }
+        prev->next =delPtr->next;
+        delete delPtr;
+        }
+
+    }
+
+        void removeAll(int data)
+        {
+            if(isEmpty())
+            {
+                cout<<"List is already empty, no items to delete"<<endl;
+            }
+
+            //head
+            while (head != nullptr && head->data == data) {
+            Node* delPtr = head;
+            head = head->next;
+            delete delPtr;
+        }
+
+            Node* temp= head;
+            while(temp!= nullptr && temp->next != nullptr)
+            {
+                if (temp->next->data == data)
+                {
+                    Node* delptr = temp->next;
+                    temp->next = delptr->next;
+                    delete delptr;
+                }
+                else
+                {
+                    temp= temp->next;
+                }
+
+            }
+        
+        }
+        
+
+        void secondRemoveAll(int data)
+{
+    // Repeat the removal as long as the item exists in the list
+    while (isFound(data)) 
+    {
+        remove(data);
+    }
+}
 };

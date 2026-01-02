@@ -76,4 +76,26 @@ int main(){
     cout << "--- Current List Content ---" << endl;
     myList.display();
 
+    //delete
+    cout << "\nEnter item to delete from the list: ";
+    cin >> item;
+    myList.remove(item);
+    cout << "--- Current List Content ---" << endl;
+    myList.display();
+
+    //remove all
+    cout << "\nEnter item to remove all its occurrences from the list: ";
+    cin >> item;
+    myList.removeAll(item);
+    cout << "--- Current List Content ---" << endl;
+    myList.display();
+
+    //second remove all technique
+    cout << "\nEnter item to remove all its occurrences from the list (second technique): ";
+    cin >> item;
+    myList.secondRemoveAll(item);
+    cout << "--- Current List Content ---" << endl;
+    myList.display();
+
+
 }
