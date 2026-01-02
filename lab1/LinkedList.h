@@ -132,4 +132,28 @@ class LinkedList{
             return -1; 
         }
     }
+
+    void append( int newValue)
+    {
+        if(isEmpty())
+        {
+            insertFirst(newValue);
+        }
+        else 
+        {
+        Node* temp= head;
+        while(temp->next !=nullptr)
+        {
+            temp = temp->next;
+        }
+        Node* newNode= new Node();
+        newNode->data= newValue;
+
+        temp->next=newNode;
+        newNode->next=nullptr;
+        }
+
+    }
+
+    
 };

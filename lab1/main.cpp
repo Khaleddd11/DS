@@ -67,5 +67,13 @@ int main(){
     cout << "Enter index to get data at that index: ";
     cin >> index;
     cout << "Data at index " << index << " is: " << myList.getDataByIndex(index);
+    
+
+    // append
+    cout << "\nEnter item to append to the list: ";
+    cin >> item;
+    myList.append(item);
+    cout << "--- Current List Content ---" << endl;
+    myList.display();
 
 }
