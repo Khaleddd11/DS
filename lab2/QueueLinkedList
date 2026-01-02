@@ -1,0 +1,48 @@
+#include <iostream>
+#include "../lab1/Node.h"
+
+using namespace std;
+
+class QueueLinkedList{
+    public:
+    Node* front;
+    Node* rear;
+
+    QueueLinkedList()
+    {
+        front = rear = nullptr;
+    }
+
+    bool isEmpty()
+    {
+        return (front == nullptr );
+    }
+
+    void display ()
+    {
+        Node* temp = front ;
+        while ( temp != nullptr)
+        {
+            cout<< temp ->data << " ";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
+
+    void enqueue(int data)
+    {
+        Node* newNode= new Node();
+        newNode ->data = data;
+
+        if (isEmpty())
+        {
+            front = rear= newNode;
+        }
+        else 
+        {
+            rear ->next = newNode;
+            rear= newNode;
+        }
+
+    }
+};
