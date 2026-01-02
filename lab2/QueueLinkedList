@@ -45,4 +45,63 @@ class QueueLinkedList{
         }
 
     }
+
+    void dequeue()
+    {
+        //already empty
+        if (isEmpty())
+        {
+            cout << "Queue is empty, cannot dequeue." << endl;
+            return;
+        }
+
+        // only one item available
+        else if (front == rear )
+        {
+            delete front;
+            front = rear= nullptr;
+        }
+
+        //there are multiple items
+        else 
+        {
+            Node* delPtr = front;
+            front = front->next;
+            delete delPtr;
+        }
+    }
+
+    int getFront()
+    {
+        if(isEmpty())
+        {
+            cout << "Queue is empty." << endl;
+            return -1; 
+        }
+        return front ->data;
+    }
+    bool isFound( int item )
+    {
+        bool isFound= false;
+        Node* temp = front;
+        while( temp != nullptr)
+        {
+            if( temp ->data == item)
+            {
+                isFound = true;
+                
+               
+            }
+            temp = temp->next;
+        }
+        return isFound;
+    }
+
+    void clearAllItems ()
+    {
+        while (!isEmpty())
+        {
+            dequeue();
+        }
+    }
 };
